@@ -1,0 +1,155 @@
+#include"funções.bgt"
+
+int a;
+string contador;
+void main(){
+show_game_window("Download Grátis, versão 1.0");
+string opcoesstring="
+Batalha constante.
+Renova Music.
+Renova Translator.
+GameSuite.
+Number Guess.
+NVDA.
+Playroom.
+Teamtalk.
+Dosvox.
+Ir para a guia informações.
+";
+
+string[] opcoes=string_split(opcoesstring, "\r\n", false);
+
+if(opcoes.length()==0){
+alert("arquivo vazio.", "");
+exit();
+}
+int contador=-1;
+while(true){
+wait(5);
+if(key_pressed(KEY_ESCAPE)){
+alert("Tchal","volte sempre");
+exit();}
+if(key_pressed(KEY_UP)&&contador>0){
+contador--;
+fale(opcoes[contador]);
+}
+if(key_pressed(KEY_DOWN)&&contador<opcoes.length()-1){
+contador++;
+fale(opcoes[contador]);
+}
+if(key_pressed(KEY_RETURN)&&contador>-1){
+tocasom("enter");
+fale("Você selecionou "+opcoes[contador]);
+break;
+}
+}
+//dd
+
+if(contador==0){
+wait(1000);
+fale("Batalha Constante é um jogo online, 2D, produzido para pessoas com deficiência visual.");
+wait(1000);
+fale("baixando batalha constante.exe");
+wait(1000);
+run("c:/windows/explorer.exe","http://renovagames.com/batalhaconstante.php",false,false);
+//msg();
+exit();}
+else if(contador==1){
+wait(1000);
+fale(" Renova Music é um programa destinado à reprodução e download de músicas com acessibilidade.");
+wait(1000);
+fale(" baixando renova music");
+wait(1000);
+run("c:/windows/explorer.exe","http://renovagames.com/renovamusic-portable.php",false,false);
+//msg();
+exit();}
+
+else if(contador==2){
+wait(1000);
+fale(" Traduza textos em diversos idiomas com o Renova Translator
+Com o Renova Translator, você pode traduzir em mais de 20 idiomas, contendo Português, Espanhol, Francês, Italiano e Filipino.");
+wait(1000);
+fale("baixando o Renova Translator.");
+wait(1500);
+run("c:/windows/explorer.exe","https://renovagames.com/SOFTWARES/RenovaTranslator.zip",false,false);
+//msg();
+exit();}
+else if(contador==3){
+
+wait(1000);
+fale(" GameSuite, diversos jogos em um único pacote.");
+wait(1000);
+fale("baixando game suite.");
+wait(1000);
+run("c:/windows/explorer.exe","http://renovagames.com/gs",false,false);
+//msg();
+exit();}
+
+else if(contador==4){
+wait(1000);
+fale("Number Guess é um jogo que testa sua velocidade em adivinhar números. Com 4 dificuldades diferentes, seu objetivo é adivinhar o máximo de números possíveis.
+Com a tabela de pontuação online, você pode desafiar seus amigos e ver qual consegue adivinhar mais números.");
+wait(1000);
+fale("baixando Number Guess.");
+wait(1000);
+run("c:/windows/explorer.exe","https://renovagames.com/softwares/Number%20Guess.exe",false,false);
+//msg();
+exit();}
+else if(contador==5){
+wait(1000);
+fale("Baixando NVDA.");
+wait(500);
+run("c:/windows/explorer.exe","https://www.nvaccess.org/files/nvda/releases/2022.2/nvda_2022.2.exe",false,false);
+exit();}
+else if(contador==6){
+wait(1000);
+fale("Baixando o cliente Playroom.");
+wait(500);
+run("c:/windows/explorer.exe","https://qcsalon.net/autodl/qcgc-setup.exe",false,false);
+exit();}
+else if(contador==7){
+wait(1000);
+fale("Baixando teamtalk.");
+wait(500);
+run("c:/windows/explorer.exe","https://bearware.dk/teamtalk/v5.10/TeamTalk_v5.10_Setup.exe",false,false);
+exit();}
+
+//info
+else if(contador==8){
+show_game_window("Informações guia.");
+string infostring="
+Informações guia selecionado.
+Criado e Desenvolvido por Vinicius vieira.
+Email para contato.
+viniciusvieirafarias2018@gmail.com
+Mande Críticas ou sujestões.
+Botão voltar para o menú de download.
+";
+string[] info=string_split(infostring, "\r\n", false);
+if(info.length()==0){
+alert("arquivo vazio.", "");
+exit();
+}
+int contador=-1;
+while(true){
+wait(5);
+if(key_pressed(KEY_ESCAPE))break;
+if(key_pressed(KEY_UP)&&contador>0){
+contador--;
+fale(info[contador]);
+}
+if(key_pressed(KEY_DOWN)&&contador<info.length()-1){
+contador++;
+fale(info[contador]);
+}
+if(key_pressed(KEY_RETURN)&&contador>-1){
+fale("Você selecionou "+info[contador]);
+if(contador==2){
+//clipboard_copy_text(info);
+}
+if(contador==5){
+main();
+return;
+}
+}
+}}}

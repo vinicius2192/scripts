@@ -1,0 +1,22 @@
+/* funções úteis
+esse arquivo tem como finalidade facilitar algumas funções*/
+string nomejanela="jogo das tentativas";
+double stn(string n){
+return string_to_number(n);
+}
+bool perguntaN(string p){
+int resp=question(nomejanela, p);
+if(resp==1)return true;
+return false;
+}
+void titulo(string t){
+show_game_window(t);
+}
+void fale(string msg){
+screen_reader_speak(NVDA,msg);
+}
+void tocasom(string som){
+sound s;
+s.load(som+".ogg");
+s.play_wait();
+}
